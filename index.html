@@ -2,23 +2,14 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#001e62">
   <title>SEHC Olympic Games 2026</title>
   
-  <!-- Chart.js for beautiful charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- ChartDataLabels plugin to show values directly on charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-  
-  <!-- Marked.js for rendering markdown -->
+  <!-- Marked.js for rendering markdown regulations -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-  <!-- Mermaid.js for beautiful flowcharts -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ startOnLoad: false, theme: 'default' });
-    Chart.register(ChartDataLabels); // Register data labels globally
-  </script>
 
   <!-- Google Fonts for maximum readability -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3476,51 +3467,246 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
+    /* ========================================================
+       MOBILE-FIRST APP EXPERIENCE ENHANCEMENTS (Android & iOS)
+       ======================================================== */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      padding-bottom: 40px !important;
+    }
+
+    /* Floating / Sticky Top Header with 4 Navigation Tabs */
+    header.mobile-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0, 30, 98, 0.08);
+      padding: 6px 0 8px 0;
+    }
+
+    .mobile-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 16px;
+    }
+
+    .mobile-header-top .brand-logo {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    .mobile-header-top .brand-logo span {
+      color: var(--primary-dark);
+    }
+
+    /* Floating Top Navigation Bar */
+    .mobile-top-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 4px;
+      background: #f1f5f9;
+      border-radius: 12px;
+      margin: 4px 12px 2px 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .top-nav-item {
+      flex: 1;
+      padding: 8px 4px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .top-nav-item:active {
+      transform: scale(0.95);
+    }
+
+    .top-nav-item.active {
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 51, 160, 0.25);
+    }
+
+    /* Rules Sport Chips Bar */
+    .rules-sport-chips-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 4px 14px 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-bottom: 12px;
+    }
+
+    .rules-sport-chips-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rules-chip-btn {
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: var(--white);
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .rules-chip-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 51, 160, 0.2);
+    }
+
+    /* Subnav Horizontally Swipeable Chips */
+    .schedule-subnav {
+      display: flex !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 8px !important;
+      padding: 10px 14px 12px 14px !important;
+      margin: 0 -12px 14px -12px !important;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-color);
+      scrollbar-width: none;
+    }
+
+    .schedule-subnav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .schedule-subnav-btn {
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      padding: 7px 13px !important;
+      border-radius: 20px !important;
+      font-size: 12.5px !important;
+    }
+
+    /* Card padding optimization for Mobile */
+    .card {
+      padding: 14px !important;
+      border-radius: 12px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .hero-banner {
+      padding: 18px 14px !important;
+      margin-bottom: 14px !important;
+      border-radius: 12px;
+    }
+
+    .hero-container h1 {
+      font-size: 19px !important;
+      line-height: 1.3 !important;
+    }
+
+    .hero-container p {
+      font-size: 12.5px !important;
+    }
+
+    main {
+      padding: 0 10px !important;
+      margin-top: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Prize KPIs 2 columns */
+    .prize-kpi-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8px !important;
+    }
+
+    .prize-kpi-card {
+      padding: 10px !important;
+    }
+
+    .prize-kpi-icon-wrap {
+      width: 34px !important;
+      height: 34px !important;
+      font-size: 17px !important;
+    }
+
+    .prize-kpi-value {
+      font-size: 15px !important;
+    }
+
+    .prize-kpi-sub {
+      display: none !important;
+    }
+
+    /* Horizontal scroll touch polish */
+    .schedule-table-card,
+    .table-container,
+    .billiard-bracket-container,
+    .venue-summary-table-wrap,
+    .prize-table-wrapper {
+      -webkit-overflow-scrolling: touch !important;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Header -->
-  <header>
-    <div class="nav-container">
-      <div class="brand-logo">
+    <!-- Mobile Fixed Header with Floating Top Navigation Bar -->
+  <header class="mobile-header">
+    <div class="mobile-header-top">
+      <div class="brand-logo" onclick="onScheduleMenuClick('master');" style="cursor: pointer; user-select: none;">
         SEHC <span>OLYMPIC 2026</span>
       </div>
-      <div class="menu-bar">
-        <div class="menu-item active" data-tab="stats-tab" data-i18n="stats">Thống kê</div>
-        <div class="menu-item dropdown" id="rules-menu">
-          <span data-i18n="rules">Điều lệ</span>
-          <div class="dropdown-content">
-            <a href="#" onclick="onRulesMenuClick('pickleball'); return false;">🏓 Pickleball</a>
-            <a href="#" onclick="onRulesMenuClick('soccer'); return false;">⚽ Bóng đá nam</a>
-            <a href="#" onclick="onRulesMenuClick('badminton'); return false;">🏸 Cầu lông</a>
-            <a href="#" onclick="onRulesMenuClick('billiard'); return false;">🎱 Bi-da</a>
-            <a href="#" onclick="onRulesMenuClick('foosball'); return false;">🕹️ Bi lắc</a>
-            <a href="#" onclick="onRulesMenuClick('lienquan'); return false;">🎮 Liên Quân Mobile</a>
-          </div>
-        </div>
-        <div class="menu-item" data-tab="prizes-tab" data-i18n="prizes">Cơ cấu giải thưởng</div>
-        <div class="menu-item dropdown" id="schedule-menu">
-          <span data-i18n="schedule">Lịch thi đấu</span>
-          <div class="dropdown-content">
-            <a href="#" onclick="onScheduleMenuClick('master'); return false;" data-i18n="scheduleGeneral">📅 Lịch chung</a>
-            <a href="#" onclick="onScheduleMenuClick('soccer'); return false;">⚽ Bóng đá nam</a>
-            <a href="#" onclick="onScheduleMenuClick('foosball'); return false;">🕹️ Bi lắc</a>
-            <a href="#" onclick="onScheduleMenuClick('badminton'); return false;">🏸 Cầu lông</a>
-            <a href="#" onclick="onScheduleMenuClick('billiard'); return false;">🎱 Bi-da</a>
-            <a href="#" onclick="onScheduleMenuClick('pickleball'); return false;">🏓 Pickleball</a>
-            <a href="#" onclick="onScheduleMenuClick('lienquan'); return false;">🎮 Liên Quân Mobile</a>
-          </div>
-        </div>
-        <div class="menu-item" data-tab="venues-tab" data-i18n="venues">Địa điểm thi đấu</div>
-
-        <!-- Language Switcher -->
-        <div class="lang-switcher">
-          <button class="lang-btn active" onclick="setLanguage('vi')">VI</button>
-          <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-        </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="lang-btn-vi" onclick="setLanguage('vi')">VI</button>
+        <button class="lang-btn" id="lang-btn-en" onclick="setLanguage('en')">EN</button>
       </div>
     </div>
+    
+    <!-- Floating Top Menu Bar (Toppage) -->
+    <nav class="mobile-top-nav" id="mobile-top-nav">
+      <button class="top-nav-item active" data-tab="schedule-tab" onclick="switchMobileTab('schedule-tab')">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label" data-i18n="schedule">Lịch đấu</span>
+      </button>
+      <button class="top-nav-item" data-tab="rules-tab" onclick="switchMobileTab('rules-tab')">
+        <span class="nav-icon">📜</span>
+        <span class="nav-label" data-i18n="rules">Điều lệ</span>
+      </button>
+      <button class="top-nav-item" data-tab="prizes-tab" onclick="switchMobileTab('prizes-tab')">
+        <span class="nav-icon">🎁</span>
+        <span class="nav-label" data-i18n="prizes">Giải thưởng</span>
+      </button>
+      <button class="top-nav-item" data-tab="venues-tab" onclick="switchMobileTab('venues-tab')">
+        <span class="nav-icon">📍</span>
+        <span class="nav-label" data-i18n="venues">Địa điểm</span>
+      </button>
+    </nav>
   </header>
 
   <!-- Hero Banner -->
@@ -3545,80 +3731,18 @@
       <p style="margin-top: 10px;"><em>Trang web đã tải trước bộ dữ liệu mẫu (Mock data) của 9 đội Pickleball bên dưới để bạn dễ dàng kiểm thử các chức năng lọc, tìm kiếm và phân tích biểu đồ!</em></p>
     </div>
 
-    <!-- TAB 1: STATISTICS DASHBOARD -->
-    <div id="stats-tab" class="tab-section active">
-      <!-- Summary Cards Row -->
-      <div class="kpi-row">
-        <div class="kpi-card">
-          <div class="kpi-card-header" data-i18n="teamCount">TỔNG SỐ ĐỘI ĐĂNG KÝ</div>
-          <div class="kpi-card-value" id="kpi-teams">-</div>
-          <div class="kpi-card-desc" id="kpi-teams-desc">Tổng số lượt đội đăng ký thi đấu</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-card-header" data-i18n="playerCount">SỐ NHÂN VIÊN THAM GIA (KHÔNG TRÙNG)</div>
-          <div class="kpi-card-value" id="kpi-players">503</div>
-          <div class="kpi-card-desc" id="kpi-players-desc">Nhân sự thực tế tham dự hội thao</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-card-header">SỐ LƯỢNG BỘ MÔN THI ĐẤU</div>
-          <div class="kpi-card-value" id="kpi-sports">-</div>
-          <div class="kpi-card-desc" id="kpi-sports-desc">-</div>
-        </div>
-      </div>
-
-      <!-- Overview Charts Row -->
-      <div class="dashboard-grid">
-        <div class="card">
-          <div class="card-title" data-i18n="teamCount">Số lượng Đội theo Bộ môn</div>
-          <div style="height: 250px; position: relative;">
-            <canvas id="teamChart"></canvas>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title" data-i18n="playersUniqueTitle">Số Nhân sự tham gia không trùng lặp</div>
-          <div style="height: 250px; position: relative;">
-            <canvas id="playerChart"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <!-- Filters Row -->
-      <div class="filter-bar">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="search-box" class="search-input" placeholder="Tìm kiếm theo tên đội, tên VĐV hoặc ID..." oninput="filterData()">
-        </div>
-        <select id="sport-filter" class="filter-select" onchange="onSportChange()">
-          <option value="" data-i18n="allSports">Tất cả bộ môn</option>
-        </select>
-        <select id="content-filter" class="filter-select" onchange="filterData()">
-          <option value="" data-i18n="allContents">Tất cả nội dung</option>
-        </select>
-      </div>
-
-      <!-- Data Table -->
-      <div class="table-container">
-        <table id="reg-table">
-          <thead>
-            <tr>
-              <th style="width: 60px;">No.</th>
-              <th data-i18n="sport">Bộ môn</th>
-              <th data-i18n="content">Nội dung</th>
-              <th data-i18n="teamName">Tên đội</th>
-              <th data-i18n="captainName">Đội trưởng</th>
-              <th data-i18n="playerCountHeader" style="width: 140px; text-align: center;">Số lượng VĐV</th>
-              <th data-i18n="action" style="width: 120px; text-align: center;">Hành động</th>
-            </tr>
-          </thead>
-          <tbody id="reg-table-body">
-            <!-- Loaded dynamically in JavaScript -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-
     <!-- TAB 2: TOURNAMENT REGULATIONS -->
     <div id="rules-tab" class="tab-section">
+      <!-- Rules Sport Picker Chips -->
+      <div class="rules-sport-chips-bar" id="rules-sport-chips-bar">
+        <button class="rules-chip-btn active" data-rules-sport="pickleball" onclick="onRulesMenuClick('pickleball')">🏓 Pickleball</button>
+        <button class="rules-chip-btn" data-rules-sport="soccer" onclick="onRulesMenuClick('soccer')">⚽ Bóng đá nam</button>
+        <button class="rules-chip-btn" data-rules-sport="badminton" onclick="onRulesMenuClick('badminton')">🏸 Cầu lông</button>
+        <button class="rules-chip-btn" data-rules-sport="billiard" onclick="onRulesMenuClick('billiard')">🎱 Bi-da</button>
+        <button class="rules-chip-btn" data-rules-sport="foosball" onclick="onRulesMenuClick('foosball')">🕹️ Bi lắc</button>
+        <button class="rules-chip-btn" data-rules-sport="lienquan" onclick="onRulesMenuClick('lienquan')">🎮 Liên Quân</button>
+      </div>
+
       <div class="markdown-card">
         <div id="markdown-viewer" class="markdown-body">
           <!-- Rendered dynamically from script markdown tag or external MD fetch -->
@@ -3756,7 +3880,7 @@
     </div>
 
     <!-- TAB 4: MATCH SCHEDULE (Interactive Master Table from lich-thi-dau.md) -->
-    <div id="schedule-tab" class="tab-section">
+    <div id="schedule-tab" class="tab-section active">
       <!-- Schedule Sub-navigation Bar -->
       <div class="schedule-subnav" id="schedule-subnav">
         <button class="schedule-subnav-btn active" data-schedule-target="master" onclick="onScheduleMenuClick('master')">
@@ -4090,15 +4214,15 @@
         </div>
         <div class="venue-card-body">
           <div class="venue-photos-grid">
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/billiards-front view.jpeg', 'CLB Bida Toàn Thắng - Mặt tiền & Lối vào')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/billiards-front view.jpeg', 'CLB Bida Toàn Thắng - Mặt tiền & Lối vào')">
               <span class="venue-photo-badge">🏢 Mặt tiền & Lối vào</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/billiards-front view.jpeg" alt="CLB Bida Toàn Thắng - Mặt tiền" loading="lazy">
+              <img src="../img/billiards-front view.jpeg" alt="CLB Bida Toàn Thắng - Mặt tiền" loading="lazy">
             </div>
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/billiards-competition area.JPG', 'CLB Bida Toàn Thắng - Không gian bàn thi đấu bên trong')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/billiards-competition area.JPG', 'CLB Bida Toàn Thắng - Không gian bàn thi đấu bên trong')">
               <span class="venue-photo-badge">🎱 Khu vực bàn thi đấu</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/billiards-competition area.JPG" alt="CLB Bida Toàn Thắng - Khu vực thi đấu" loading="lazy">
+              <img src="../img/billiards-competition area.JPG" alt="CLB Bida Toàn Thắng - Khu vực thi đấu" loading="lazy">
             </div>
           </div>
           <div class="venue-tips-grid">
@@ -4148,15 +4272,15 @@
         </div>
         <div class="venue-card-body">
           <div class="venue-photos-grid">
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/badminton-front view.jpeg', 'Sân cầu lông UTE - Cổng vào & Khuôn viên Nhà thi đấu')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/badminton-front view.jpeg', 'Sân cầu lông UTE - Cổng vào & Khuôn viên Nhà thi đấu')">
               <span class="venue-photo-badge">🏢 Cổng vào & Khuôn viên</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/badminton-front view.jpeg" alt="Sân cầu lông UTE - Mặt tiền" loading="lazy">
+              <img src="../img/badminton-front view.jpeg" alt="Sân cầu lông UTE - Mặt tiền" loading="lazy">
             </div>
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/badminton-competition area.JPG', 'Sân cầu lông UTE - Cụm sân thảm chuyên dụng thi đấu')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/badminton-competition area.JPG', 'Sân cầu lông UTE - Cụm sân thảm chuyên dụng thi đấu')">
               <span class="venue-photo-badge">🏸 Cụm sân thảm chuyên dụng</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/badminton-competition area.JPG" alt="Sân cầu lông UTE - Khu vực thi đấu" loading="lazy">
+              <img src="../img/badminton-competition area.JPG" alt="Sân cầu lông UTE - Khu vực thi đấu" loading="lazy">
             </div>
           </div>
           <div class="venue-tips-grid">
@@ -4206,15 +4330,15 @@
         </div>
         <div class="venue-card-body">
           <div class="venue-photos-grid">
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/pickleball-front view.jpeg', 'Tennis - Pickleball Nam Long - Cổng vào & Mặt tiền')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/pickleball-front view.jpeg', 'Tennis - Pickleball Nam Long - Cổng vào & Mặt tiền')">
               <span class="venue-photo-badge">🏢 Cổng vào & Mặt tiền</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/pickleball-front view.jpeg" alt="Tennis - Pickleball Nam Long - Mặt tiền" loading="lazy">
+              <img src="../img/pickleball-front view.jpeg" alt="Tennis - Pickleball Nam Long - Mặt tiền" loading="lazy">
             </div>
-            <div class="venue-photo-wrapper" onclick="openVenueImageModal('img/pickleball-competition area.jpg', 'Tennis - Pickleball Nam Long - Cụm 3 sân thi đấu có mái che')">
+            <div class="venue-photo-wrapper" onclick="openVenueImageModal('../img/pickleball-competition area.jpg', 'Tennis - Pickleball Nam Long - Cụm 3 sân thi đấu có mái che')">
               <span class="venue-photo-badge">🏓 Cụm sân thi đấu có mái che</span>
               <span class="venue-photo-zoom-hint">🔍 Bấm để phóng to</span>
-              <img src="img/pickleball-competition area.jpg" alt="Tennis - Pickleball Nam Long - Khu vực thi đấu" loading="lazy">
+              <img src="../img/pickleball-competition area.jpg" alt="Tennis - Pickleball Nam Long - Khu vực thi đấu" loading="lazy">
             </div>
           </div>
           <div class="venue-tips-grid">
@@ -6098,8 +6222,8 @@
     "captainId": "16774200",
     "captainName": "Trịnh Minh Hiếu",
     "captainPhone": "0769865599",
-    "player2Id": "16805356",
-    "player2Name": "Vũ Đình Khánh",
+    "player2Id": "25526023",
+    "player2Name": "Huỳnh Như Thông",
     "player3Id": "",
     "player3Name": "",
     "player4Id": "",
@@ -6461,8 +6585,8 @@
       { month: "Nov", day: "Sun", date: "08", events: [{ sport: "Badminton", text: "Ngày thi đấu / Match Day" }] },
       { month: "Nov", day: "Mon", date: "09", events: [{ sport: "Men's soccer", text: "Vòng bảng / Group Stage" }] },
       { month: "Nov", day: "Tue", date: "10", events: [{ sport: "Men's soccer", text: "Vòng bảng / Group Stage" }] },
-      { month: "Nov", day: "Wed", date: "11", events: [{ sport: "Liên Quân", text: "Bán kết / Semi-finals" }] },
-      { month: "Nov", day: "Thu", date: "12", events: [] },
+      { month: "Nov", day: "Wed", date: "11", events: [] },
+      { month: "Nov", day: "Thu", date: "12", events: [{ sport: "Liên Quân", text: "Bán kết / Semi-finals" }] },
       { month: "Nov", day: "Fri", date: "13", events: [{ sport: "Men's soccer", text: "Bán kết / Semi-finals" }] },
       { month: "Nov", day: "Sat", date: "14", events: [] },
       { month: "Nov", day: "Sun", date: "15", events: [{ sport: "Pickleball", text: "Ngày thi đấu / Match Day" }] },
@@ -6558,7 +6682,7 @@
     async function loadMainData() {
       // Fetch registrations data
       try {
-        const response = await fetch('./registrations.md');
+        const response = await fetch('../registrations.md');
         if (!response.ok) throw new Error('Network response was not ok');
         const text = await response.text();
         
@@ -6576,7 +6700,7 @@
 
       // Fetch schedule data
       try {
-        const response = await fetch('./lich-thi-dau.md');
+        const response = await fetch('../lich-thi-dau.md');
         if (!response.ok) throw new Error('Network response was not ok');
         const text = await response.text();
         
@@ -7250,40 +7374,60 @@
             { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B2] VD3 Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B2] VD3 Production G</strong>' }
           ],
           '27-Oct': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A3] VD CS</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A3] VD CS</strong> vs <strong>[A4] Inhouse</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B3] Living Production G</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B3] Living Production G</strong> vs <strong>[B4] VD1 Production G</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B3] Living Production G</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B3] Living Production G</strong> vs <strong>[B4] VD1 Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A3] VD CS</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A3] VD CS</strong> vs <strong>[A4] Inhouse</strong>' }
           ],
           '29-Oct': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B5] VD R&D</strong> vs <strong>[B1] DA CS</strong>', mEn: '<strong>[B5] VD R&D</strong> vs <strong>[B1] DA CS</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A5] REF Production G</strong> vs <strong>[A1] VD Production 2T 🏆</strong>', mEn: '<strong>[A5] REF Production G</strong> vs <strong>[A1] VD Production 2T 🏆</strong>' }
           ],
           '30-Oct': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A3] VD CS</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A3] VD CS</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B3] Living Production G</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B3] Living Production G</strong>' }
           ],
           '2-Nov': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A4] Inhouse</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B4] VD1 Production G</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>' }
+          ],
+          '02-Nov': [
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>' }
           ],
           '3-Nov': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A5] REF Production G</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B5] VD R&D</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>' }
+          ],
+          '03-Nov': [
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B3] Living Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A3] VD CS</strong>' }
           ],
           '5-Nov': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>' }
+          ],
+          '05-Nov': [
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B5] VD R&D</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A5] REF Production G</strong>' }
           ],
           '6-Nov': [
             { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A4] Inhouse</strong>' },
             { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B4] VD1 Production G</strong>' }
           ],
+          '06-Nov': [
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A1] VD Production 2T 🏆</strong> vs <strong>[A4] Inhouse</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B1] DA CS</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B1] DA CS</strong> vs <strong>[B4] VD1 Production G</strong>' }
+          ],
           '9-Nov': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A3] VD CS</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A3] VD CS</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B3] Living Production G</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B3] Living Production G</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>' }
+          ],
+          '09-Nov': [
+            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A3] VD CS</strong> vs <strong>[A5] REF Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B3] Living Production G</strong> vs <strong>[B5] VD R&D</strong>' }
           ],
           '10-Nov': [
-            { time: '18:00 - 19:15', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>', mEn: '<strong>[A4] Inhouse</strong> vs <strong>[A5] REF Production G</strong>' },
-            { time: '19:30 - 20:45', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>', mEn: '<strong>[B4] VD1 Production G</strong> vs <strong>[B5] VD R&D</strong>' }
+            { time: '18:00 - 19:15', stageVi: 'Bảng B', stageEn: 'Group B', mVi: '<strong>[B2] VD3 Production G</strong> vs <strong>[B4] VD1 Production G</strong>', mEn: '<strong>[B2] VD3 Production G</strong> vs <strong>[B4] VD1 Production G</strong>' },
+            { time: '19:30 - 20:45', stageVi: 'Bảng A', stageEn: 'Group A', mVi: '<strong>[A2] VD Facility G</strong> vs <strong>[A4] Inhouse</strong>', mEn: '<strong>[A2] VD Facility G</strong> vs <strong>[A4] Inhouse</strong>' }
           ],
           '13-Nov': [
             { time: '18:00 - 19:15', stageVi: 'Bán kết 1', stageEn: 'Semi-Final 1', mVi: '<strong>Nhất Bảng A</strong> vs <strong>Nhì Bảng B</strong>', mEn: '<strong>1st Group A</strong> vs <strong>2nd Group B</strong>' },
@@ -7299,7 +7443,7 @@
         };
 
         const dayKey = `${dayData.date}-${dayData.month}`;
-        const dayMatches = soccerDailyMap[dayKey];
+        const dayMatches = soccerDailyMap[dayKey] || soccerDailyMap[dayKey.replace(/^0/, '')];
 
         let matchesListHtml = '';
         if (dayMatches && dayMatches.length > 0) {
@@ -8107,35 +8251,45 @@
       document.getElementById('detail-modal').style.display = 'none';
     }
 
-    // Tab Switch Controller
+        // Tab Switch Controller for Mobile
     function setupTabListeners() {
-      const items = document.querySelectorAll('.menu-item[data-tab]');
-      items.forEach(item => {
-        item.addEventListener('click', () => {
-          const tabId = item.getAttribute('data-tab');
-          switchTab(tabId);
-        });
+      // Handled directly via switchMobileTab
+    }
+
+    function switchMobileTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      const targetSec = document.getElementById(tabId);
+      if (targetSec) targetSec.classList.add('active');
+
+      document.querySelectorAll('.top-nav-item').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
       });
+
+      if (tabId === 'prizes-tab') {
+        renderPrizes();
+      } else if (tabId === 'rules-tab') {
+        onRulesMenuClick(currentRulesSport);
+      } else if (tabId === 'schedule-tab') {
+        onScheduleMenuClick(currentScheduleView);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function switchTab(tabId) {
-      document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.tab-section').forEach(el => el.classList.remove('active'));
-
-      if (tabId === 'rules-tab') {
-        document.getElementById('rules-menu').classList.add('active');
-      } else if (tabId === 'schedule-tab') {
-        document.getElementById('schedule-menu').classList.add('active');
-      } else {
-        const activeMenu = document.querySelector(`.menu-item[data-tab="${tabId}"]`);
-        if (activeMenu) activeMenu.classList.add('active');
-      }
-
-      const activeTab = document.getElementById(tabId);
-      if (activeTab) activeTab.classList.add('active');
-
-      window.scrollTo({ top: 300, behavior: 'smooth' });
+      switchMobileTab(tabId);
     }
+
+    function updateDashboardCharts() {}
+    function calculateKPIs() {}
+    function populateDropdownFilters() {}
+    function renderTable() {}
+    function renderStatisticsCharts() {}
+    function onSportChange() {}
 
     let currentScheduleView = 'master'; // 'master' | 'soccer' | 'foosball' | 'badminton' | 'billiard' | 'pickleball' | 'lienquan'
 
@@ -8150,7 +8304,20 @@
 
     function onScheduleMenuClick(viewOrSport) {
       if (viewOrSport) currentScheduleView = viewOrSport;
-      switchTab('schedule-tab');
+      
+      // Update tab section to schedule-tab
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      const schedTab = document.getElementById('schedule-tab');
+      if (schedTab) schedTab.classList.add('active');
+
+      // Update top navigation bar active button
+      document.querySelectorAll('.top-nav-item').forEach(btn => {
+        if (btn.getAttribute('data-tab') === 'schedule-tab') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
 
       const masterView = document.getElementById('schedule-master-view');
       const sportView = document.getElementById('schedule-sport-view');
@@ -8160,6 +8327,7 @@
       subnavBtns.forEach(btn => {
         if (btn.getAttribute('data-schedule-target') === currentScheduleView) {
           btn.classList.add('active');
+          btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         } else {
           btn.classList.remove('active');
         }
@@ -8168,6 +8336,7 @@
       if (currentScheduleView === 'master') {
         if (masterView) masterView.style.display = 'block';
         if (sportView) sportView.style.display = 'none';
+        renderScheduleTable();
       } else {
         if (masterView) masterView.style.display = 'none';
         if (sportView) {
@@ -8183,7 +8352,7 @@
         sportNameVi: "Bóng đá",
         sportNameEn: "Football",
         order: "00",
-        qrImg: "zalo-qr/00. Bóng đá.jpg",
+        qrImg: "../zalo-qr/00. Bóng đá.jpg",
         shortlink: "https://bit.ly/Sehcfootball",
         icon: "⚽"
       },
@@ -8191,7 +8360,7 @@
         sportNameVi: "Cầu lông",
         sportNameEn: "Badminton",
         order: "01",
-        qrImg: "zalo-qr/01. Cầu lông.jpg",
+        qrImg: "../zalo-qr/01. Cầu lông.jpg",
         shortlink: "https://bit.ly/Sehcbadminton",
         icon: "🏸"
       },
@@ -8199,7 +8368,7 @@
         sportNameVi: "Pickelball",
         sportNameEn: "Pickleball",
         order: "02",
-        qrImg: "zalo-qr/02. Pickelball.jpg",
+        qrImg: "../zalo-qr/02. Pickelball.jpg",
         shortlink: "https://bit.ly/Sehcpickelball",
         icon: "🏓"
       },
@@ -8207,7 +8376,7 @@
         sportNameVi: "Bida",
         sportNameEn: "Billiards",
         order: "03",
-        qrImg: "zalo-qr/03. Bida.jpg",
+        qrImg: "../zalo-qr/03. Bida.jpg",
         shortlink: "https://bit.ly/bida26",
         icon: "🎱"
       },
@@ -8215,7 +8384,7 @@
         sportNameVi: "Bi lắc",
         sportNameEn: "Foosball",
         order: "04",
-        qrImg: "zalo-qr/04. Bi lắc.jpg",
+        qrImg: "../zalo-qr/04. Bi lắc.jpg",
         shortlink: "https://bit.ly/bilac26",
         icon: "🕹️"
       },
@@ -8223,7 +8392,7 @@
         sportNameVi: "Liên quân",
         sportNameEn: "Arena of Valor",
         order: "05",
-        qrImg: "zalo-qr/05. Liên quân.jpg",
+        qrImg: "../zalo-qr/05. Liên quân.jpg",
         shortlink: "https://bit.ly/lienquan26",
         icon: "🎮"
       }
@@ -8421,6 +8590,8 @@
         detailSectionHtml = getFoosballDetailedScheduleHtml(currentLang);
       } else if (sportKey === 'badminton') {
         detailSectionHtml = getBadmintonDetailedScheduleHtml(currentLang);
+      } else if (sportKey === 'lienquan') {
+        detailSectionHtml = getLienQuanDetailedScheduleHtml(currentLang);
       } else {
         detailSectionHtml = `
           <!-- Detailed Match Pairing / Bracket Placeholder Card for remaining sports -->
@@ -8516,40 +8687,40 @@
         { num: 2, date: '26-Oct', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B1', t1Name: 'DA CS', t1Champ: false, t2Code: 'B2', t2Name: 'VD3 Production G', t2Champ: false, dayGroup: 1, noteVi: '', noteEn: '' },
 
         // Day 2: 27-Oct (Ba / Tue)
-        { num: 3, date: '27-Oct', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A3', t1Name: 'VD CS', t1Champ: false, t2Code: 'A4', t2Name: 'Inhouse', t2Champ: false, dayGroup: 2, noteVi: '', noteEn: '' },
-        { num: 4, date: '27-Oct', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B3', t1Name: 'Living Production G', t1Champ: false, t2Code: 'B4', t2Name: 'VD1 Production G', t2Champ: false, dayGroup: 2, noteVi: '', noteEn: '' },
+        { num: 3, date: '27-Oct', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B3', t1Name: 'Living Production G', t1Champ: false, t2Code: 'B4', t2Name: 'VD1 Production G', t2Champ: false, dayGroup: 2, noteVi: '', noteEn: '' },
+        { num: 4, date: '27-Oct', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A3', t1Name: 'VD CS', t1Champ: false, t2Code: 'A4', t2Name: 'Inhouse', t2Champ: false, dayGroup: 2, noteVi: '', noteEn: '' },
 
         // Day 3: 29-Oct (Năm / Thu)
-        { num: 5, date: '29-Oct', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 3, noteVi: '', noteEn: '' },
-        { num: 6, date: '29-Oct', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 3, noteVi: '', noteEn: '' },
+        { num: 5, date: '29-Oct', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '18:00 - 19:15', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B5', t1Name: 'VD R&D', t1Champ: false, t2Code: 'B1', t2Name: 'DA CS', t2Champ: false, dayGroup: 3, noteVi: '', noteEn: '' },
+        { num: 6, date: '29-Oct', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '19:30 - 20:45', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A5', t1Name: 'REF Production G', t1Champ: false, t2Code: 'A1', t2Name: 'VD Production 2T', t2Champ: true, dayGroup: 3, noteVi: '', noteEn: '' },
 
         // Day 4: 30-Oct (Sáu / Fri)
-        { num: 7, date: '30-Oct', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A1', t1Name: 'VD Production 2T', t1Champ: true, t2Code: 'A3', t2Name: 'VD CS', t2Champ: false, dayGroup: 4, noteVi: '', noteEn: '' },
-        { num: 8, date: '30-Oct', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B1', t1Name: 'DA CS', t1Champ: false, t2Code: 'B3', t2Name: 'Living Production G', t2Champ: false, dayGroup: 4, noteVi: '', noteEn: '' },
+        { num: 7, date: '30-Oct', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A3', t2Name: 'VD CS', t2Champ: false, dayGroup: 4, noteVi: '', noteEn: '' },
+        { num: 8, date: '30-Oct', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B3', t2Name: 'Living Production G', t2Champ: false, dayGroup: 4, noteVi: '', noteEn: '' },
 
         // Day 5: 02-Nov (Hai / Mon)
-        { num: 9, date: '02-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A4', t2Name: 'Inhouse', t2Champ: false, dayGroup: 5, noteVi: '', noteEn: '' },
-        { num: 10, date: '02-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B4', t2Name: 'VD1 Production G', t2Champ: false, dayGroup: 5, noteVi: '', noteEn: '' },
+        { num: 9, date: '02-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A4', t1Name: 'Inhouse', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 5, noteVi: '', noteEn: '' },
+        { num: 10, date: '02-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B4', t1Name: 'VD1 Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 5, noteVi: '', noteEn: '' },
 
         // Day 6: 03-Nov (Ba / Tue)
-        { num: 11, date: '03-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A1', t1Name: 'VD Production 2T', t1Champ: true, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 6, noteVi: '', noteEn: '' },
-        { num: 12, date: '03-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B1', t1Name: 'DA CS', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 6, noteVi: '', noteEn: '' },
+        { num: 11, date: '03-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B1', t1Name: 'DA CS', t1Champ: false, t2Code: 'B3', t2Name: 'Living Production G', t2Champ: false, dayGroup: 6, noteVi: '', noteEn: '' },
+        { num: 12, date: '03-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A1', t1Name: 'VD Production 2T', t1Champ: true, t2Code: 'A3', t2Name: 'VD CS', t2Champ: false, dayGroup: 6, noteVi: '', noteEn: '' },
 
         // Day 7: 05-Nov (Năm / Thu)
-        { num: 13, date: '05-Nov', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A3', t1Name: 'VD CS', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 7, noteVi: '', noteEn: '' },
-        { num: 14, date: '05-Nov', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B3', t1Name: 'Living Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 7, noteVi: '', noteEn: '' },
+        { num: 13, date: '05-Nov', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '18:00 - 19:15', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 7, noteVi: '', noteEn: '' },
+        { num: 14, date: '05-Nov', dayVi: 'Thứ Năm', dayEn: 'Thu', time: '19:30 - 20:45', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 7, noteVi: '', noteEn: '' },
 
         // Day 8: 06-Nov (Sáu / Fri)
         { num: 15, date: '06-Nov', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A1', t1Name: 'VD Production 2T', t1Champ: true, t2Code: 'A4', t2Name: 'Inhouse', t2Champ: false, dayGroup: 8, noteVi: '', noteEn: '' },
         { num: 16, date: '06-Nov', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B1', t1Name: 'DA CS', t1Champ: false, t2Code: 'B4', t2Name: 'VD1 Production G', t2Champ: false, dayGroup: 8, noteVi: '', noteEn: '' },
 
         // Day 9: 09-Nov (Hai / Mon)
-        { num: 17, date: '09-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A3', t2Name: 'VD CS', t2Champ: false, dayGroup: 9, noteVi: '', noteEn: '' },
-        { num: 18, date: '09-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B3', t2Name: 'Living Production G', t2Champ: false, dayGroup: 9, noteVi: '', noteEn: '' },
+        { num: 17, date: '09-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A3', t1Name: 'VD CS', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 9, noteVi: '', noteEn: '' },
+        { num: 18, date: '09-Nov', dayVi: 'Thứ Hai', dayEn: 'Mon', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B3', t1Name: 'Living Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 9, noteVi: '', noteEn: '' },
 
         // Day 10: 10-Nov (Ba / Tue)
-        { num: 19, date: '10-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A4', t1Name: 'Inhouse', t1Champ: false, t2Code: 'A5', t2Name: 'REF Production G', t2Champ: false, dayGroup: 10, noteVi: 'Lượt cuối Bảng A', noteEn: 'Final round Group A' },
-        { num: 20, date: '10-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B4', t1Name: 'VD1 Production G', t1Champ: false, t2Code: 'B5', t2Name: 'VD R&D', t2Champ: false, dayGroup: 10, noteVi: 'Lượt cuối Bảng B', noteEn: 'Final round Group B' },
+        { num: 19, date: '10-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '18:00 - 19:15', stage: 'group-b', stageNameVi: 'Bảng B', stageNameEn: 'Group B', t1Code: 'B2', t1Name: 'VD3 Production G', t1Champ: false, t2Code: 'B4', t2Name: 'VD1 Production G', t2Champ: false, dayGroup: 10, noteVi: 'Lượt cuối Bảng B', noteEn: 'Final round Group B' },
+        { num: 20, date: '10-Nov', dayVi: 'Thứ Ba', dayEn: 'Tue', time: '19:30 - 20:45', stage: 'group-a', stageNameVi: 'Bảng A', stageNameEn: 'Group A', t1Code: 'A2', t1Name: 'VD Facility G', t1Champ: false, t2Code: 'A4', t2Name: 'Inhouse', t2Champ: false, dayGroup: 10, noteVi: 'Lượt cuối Bảng A', noteEn: 'Final round Group A' },
 
         // Day 11: 13-Nov (Sáu / Fri) - Knockout Semi-Finals
         { num: 21, date: '13-Nov', dayVi: 'Thứ Sáu', dayEn: 'Fri', time: '18:00 - 19:15', stage: 'knockout', stageNameVi: 'Bán kết 1', stageNameEn: 'Semi-Final 1', t1Code: 'Nhất A', t1Name: isVi ? 'Nhất Bảng A' : '1st Group A', t1Champ: false, t2Code: 'Nhì B', t2Name: isVi ? 'Nhì Bảng B' : '2nd Group B', t2Champ: false, dayGroup: 11, noteVi: 'Thắng vào Chung kết, Thua tranh Hạng 3', noteEn: 'Winner to Final, Loser to 3rd Place' },
@@ -11912,6 +12083,729 @@
       `;
     }
 
+
+    // Detailed Match Schedule Table & Tournament Bracket for Lien Quan Mobile 2026
+    function getLienQuanDetailedScheduleHtml(lang) {
+      const isVi = lang === 'vi';
+      return `
+        <!-- CARD 1: DETAILED MATCH SCHEDULE TABLE -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+            <div class="card-title" style="margin-bottom: 0;">
+              <span>🎮</span>
+              <span>${isVi ? 'SƠ ĐỒ BẢNG ĐẤU & LỊCH THI ĐẤU CHI TIẾT (GIẢI LIÊN QUÂN MOBILE SEHC 2026)' : 'TOURNAMENT BRACKET & DETAILED MATCH SCHEDULE (LIEN QUAN MOBILE 2026)'}</span>
+            </div>
+            <span class="schedule-summary-badge" style="background: #e6f7ff; color: #0033a0; border-color: #91d5ff;">
+              ${isVi ? '5 ngày thi đấu • 19 đội tuyển • 19 trận tranh tài đỉnh cao' : '5 match days • 19 teams • 19 matches'}
+            </span>
+          </div>
+
+          <div style="border: 1px solid var(--border-color); border-radius: 12px; overflow-x: auto; background: var(--white); box-shadow: var(--shadow-sm);">
+            <table class="schedule-summary-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+              <thead>
+                <tr>
+                  <th style="width: 130px; text-align: center;">${isVi ? 'Ngày & Khung giờ' : 'Date & Time'}</th>
+                  <th style="width: 135px;">${isVi ? 'Vòng đấu' : 'Round'}</th>
+                  <th style="width: 80px; text-align: center;">${isVi ? 'Mã trận' : 'Code'}</th>
+                  <th style="min-width: 260px;">${isVi ? 'Cặp đấu tranh tài (Team 1 vs Team 2)' : 'Matchup (Team 1 vs Team 2)'}</th>
+                  <th style="min-width: 130px; text-align: center;">${isVi ? 'Phân nhánh' : 'Branch'}</th>
+                  <th style="min-width: 160px; text-align: center;">${isVi ? 'Địa điểm' : 'Venue'}</th>
+                  <th style="min-width: 190px;">${isVi ? 'Lộ trình nhánh thắng / Ghi chú' : 'Advancement / Notes'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- GIAI ĐOẠN 1: SƠ LOẠI -->
+                <tr style="background: #f0f7ff;">
+                  <td colspan="7" style="font-weight: 800; color: #0033a0; padding: 10px 14px; font-size: 13.5px;">
+                    ⚡ ${isVi ? 'GIAI ĐOẠN 1: VÒNG SƠ LOẠI (Thứ Ba, ngày 27/10/2026 • Từ 18h00)' : 'STAGE 1: PRELIMINARY ROUND (Tuesday, Oct 27, 2026 • From 6:00 PM)'}
+                    <span style="font-weight: 500; font-size: 12px; color: #475569; margin-left: 8px;">
+                      (${isVi ? '6 đội thi đấu loại 3 đội; 13 đội đặc cách vào thẳng Vòng 1/16' : '6 teams compete, 3 eliminated; 13 teams bye directly to Round of 16'})
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Vòng Sơ Loại' : 'Preliminary'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#e6f4ff; color:#0033a0;">SL1</span></td>
+                  <td>
+                    <div style="font-weight: 700; color: #1e293b;">LQ-01 (Biệt đội diệt gà)</div>
+                    <div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-17 (Chỉ Đánh Vòng Loại)</strong></div>
+                  </td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top Branch'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3) / Online</td>
+                  <td><span style="color: #0084ff; font-weight: 600;">➔ ${isVi ? 'Thắng vào M1 gặp LQ-04' : 'Winner to M1 vs LQ-04'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Vòng Sơ Loại' : 'Preliminary'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#e6f4ff; color:#0033a0;">SL2</span></td>
+                  <td>
+                    <div style="font-weight: 700; color: #1e293b;">LQ-02 (Chỉ Đánh Chung Kết)</div>
+                    <div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-18 (VD T-Rex)</strong></div>
+                  </td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top Branch'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3) / Online</td>
+                  <td><span style="color: #0084ff; font-weight: 600;">➔ ${isVi ? 'Thắng vào M4 gặp LQ-07' : 'Winner to M4 vs LQ-07'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Vòng Sơ Loại' : 'Preliminary'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#edf9e4; color:#237804;">SL3</span></td>
+                  <td>
+                    <div style="font-weight: 700; color: #1e293b;">LQ-03 (DA INLINE)</div>
+                    <div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-19 (BL.SUGN)</strong></div>
+                  </td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom Branch'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3) / Online</td>
+                  <td><span style="color: #16a34a; font-weight: 600;">➔ ${isVi ? 'Thắng vào M5 gặp LQ-08' : 'Winner to M5 vs LQ-08'}</span></td>
+                </tr>
+
+                <!-- GIAI ĐOẠN 2: VÒNG 1/16 -->
+                <tr style="background: #f0fdf4;">
+                  <td colspan="7" style="font-weight: 800; color: #166534; padding: 10px 14px; font-size: 13.5px;">
+                    🛡️ ${isVi ? 'GIAI ĐOẠN 2: VÒNG 1/16 (Thứ Năm, ngày 29/10/2026 • Từ 18h00)' : 'STAGE 2: ROUND OF 16 (Thursday, Oct 29, 2026 • From 6:00 PM)'}
+                    <span style="font-weight: 500; font-size: 12px; color: #475569; margin-left: 8px;">
+                      (${isVi ? '16 đội tranh tài Bo3 Cấm/Chọn Quốc Tế; 8 đội thắng vào Tứ kết' : '16 teams Bo3 Global Ban/Pick; 8 winners advance to Quarter-finals'})
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M1</span></td>
+                  <td><div style="font-weight: 700;">LQ-04 (Thợ Săn Tiền Thưởng)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng SL1' : 'Winner SL1'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 1 (TK1)' : 'Winner to QF1'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M2</span></td>
+                  <td><div style="font-weight: 700;">LQ-05 (MM)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-15 (Saigon Phantom)</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 1 (TK1)' : 'Winner to QF1'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M3</span></td>
+                  <td><div style="font-weight: 700;">LQ-06 (Logistic DA2)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-16 (ABC)</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 2 (TK2)' : 'Winner to QF2'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M4</span></td>
+                  <td><div style="font-weight: 700;">LQ-07 (Chạy Đi Còn Kịp)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng SL2' : 'Winner SL2'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 2 (TK2)' : 'Winner to QF2'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M5</span></td>
+                  <td><div style="font-weight: 700;">LQ-08 (Nợ Duyên)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng SL3' : 'Winner SL3'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 3 (TK3)' : 'Winner to QF3'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M6</span></td>
+                  <td><div style="font-weight: 700;">LQ-09 (AE Kitting VD1)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-14 (Apex Predators)</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 3 (TK3)' : 'Winner to QF3'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M7</span></td>
+                  <td><div style="font-weight: 700;">LQ-10 (Speaker_T1)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-13 (PK~toichoi)</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 4 (TK4)' : 'Winner to QF4'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td>${isVi ? 'Vòng 1/16' : 'Round of 16'}</td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#f1f5f9; color:#475569;">M8</span></td>
+                  <td><div style="font-weight: 700;">LQ-11 (REF_SL Team)</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>LQ-12 (VD3 . Esports)</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span>➔ ${isVi ? 'Thắng vào Tứ kết 4 (TK4)' : 'Winner to QF4'}</span></td>
+                </tr>
+
+                <!-- GIAI ĐOẠN 3: TỨ KẾT -->
+                <tr style="background: #fdfaf5;">
+                  <td colspan="7" style="font-weight: 800; color: #c2410c; padding: 10px 14px; font-size: 13.5px;">
+                    ⚔️ ${isVi ? 'GIAI ĐOẠN 3: VÒNG TỨ KẾT (Thứ Năm, ngày 05/11/2026 • Từ 18h00)' : 'STAGE 3: QUARTER-FINALS (Thursday, Nov 05, 2026 • From 6:00 PM)'}
+                    <span style="font-weight: 500; font-size: 12px; color: #475569; margin-left: 8px;">
+                      (${isVi ? '4 trận đối đầu đỉnh cao; 4 đội thắng tiến vào Bán kết' : '4 matches; 4 winners advance to Semi-finals'})
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Tứ Kết 1' : 'Quarter-Final 1'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#e6f7ff; color:#096dd9;">TK1</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng M1' : 'Winner M1'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng M2' : 'Winner M2'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span style="color: #0084ff; font-weight: 600;">➔ ${isVi ? 'Thắng vào Bán kết 1 (BK1)' : 'Winner to SF1'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Tứ Kết 2' : 'Quarter-Final 2'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#e6f7ff; color:#096dd9;">TK2</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng M3' : 'Winner M3'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng M4' : 'Winner M4'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span style="color: #0084ff; font-weight: 600;">➔ ${isVi ? 'Thắng vào Bán kết 1 (BK1)' : 'Winner to SF1'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Tứ Kết 3' : 'Quarter-Final 3'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#edf9e4; color:#237804;">TK3</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng M5' : 'Winner M5'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng M6' : 'Winner M6'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span style="color: #16a34a; font-weight: 600;">➔ ${isVi ? 'Thắng vào Bán kết 2 (BK2)' : 'Winner to SF2'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 (Đồng loạt)</td>
+                  <td><strong>${isVi ? 'Tứ Kết 4' : 'Quarter-Final 4'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#edf9e4; color:#237804;">TK4</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng M7' : 'Winner M7'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng M8' : 'Winner M8'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn / Online</td>
+                  <td><span style="color: #16a34a; font-weight: 600;">➔ ${isVi ? 'Thắng vào Bán kết 2 (BK2)' : 'Winner to SF2'}</span></td>
+                </tr>
+
+                <!-- GIAI ĐOẠN 4: BÁN KẾT (12/11 THỨ 5) -->
+                <tr style="background: #f0fdfa;">
+                  <td colspan="7" style="font-weight: 800; color: #0f766e; padding: 10px 14px; font-size: 13.5px;">
+                    🔥 ${isVi ? 'GIAI ĐOẠN 4: VÒNG BÁN KẾT (Thứ Năm, ngày 12/11/2026 • Từ 18h00)' : 'STAGE 4: SEMI-FINALS (Thursday, Nov 12, 2026 • From 6:00 PM)'}
+                    <span style="font-weight: 600; font-size: 12px; color: #0f766e; margin-left: 8px; background: #ccfbf1; padding: 2px 8px; border-radius: 4px;">
+                      (${isVi ? 'Lịch đổi sang Thứ Năm 12/11' : 'Updated to Thursday Nov 12'})
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">18h00 - 19h00</td>
+                  <td><strong style="color: #0f766e;">${isVi ? 'Bán Kết 1' : 'Semi-Final 1'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#e6f7ff; color:#096dd9;">BK1</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng TK1' : 'Winner QF1'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng TK2' : 'Winner QF2'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3) / Online</td>
+                  <td><span style="color: #b45309; font-weight: 700;">➔ ${isVi ? 'Thắng vào Chung kết | Thua tranh Hạng 3' : 'Winner to Final | Loser to 3rd'}</span></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #0033a0;">19h00 - 20h00</td>
+                  <td><strong style="color: #0f766e;">${isVi ? 'Bán Kết 2' : 'Semi-Final 2'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#edf9e4; color:#237804;">BK2</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Thắng TK3' : 'Winner QF3'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Thắng TK4' : 'Winner QF4'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3) / Online</td>
+                  <td><span style="color: #b45309; font-weight: 700;">➔ ${isVi ? 'Thắng vào Chung kết | Thua tranh Hạng 3' : 'Winner to Final | Loser to 3rd'}</span></td>
+                </tr>
+
+                <!-- GIAI ĐOẠN 5: CHUNG KẾT & TRANH HẠNG BA -->
+                <tr style="background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);">
+                  <td colspan="7" style="font-weight: 800; color: #92400e; padding: 10px 14px; font-size: 13.5px;">
+                    🏆 ${isVi ? 'GIAI ĐOẠN 5: TRANH HẠNG BA & CHUNG KẾT (Thứ Hai, ngày 16/11/2026 • Từ 18h00)' : 'STAGE 5: 3RD PLACE & GRAND FINAL (Monday, Nov 16, 2026 • From 6:00 PM)'}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; font-weight: 700; color: #c2410c;">18h00 - 19h00</td>
+                  <td><strong style="color: #c2410c;">🥉 ${isVi ? 'Tranh Hạng Ba' : '3rd Place Match'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#fff7e6; color:#d46b08;">BA</span></td>
+                  <td><div style="font-weight: 700;">${isVi ? 'Đội thua Bán kết 1' : 'Loser of Semi-Final 1'}</div><div style="color: #64748b; font-size: 11.5px;">vs <strong>${isVi ? 'Đội thua Bán kết 2' : 'Loser of Semi-Final 2'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-third">${isVi ? 'Tranh Hạng 3' : '3rd Place'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3)</td>
+                  <td><span style="color: #c2410c; font-weight: 700;">🥉 ${isVi ? 'HCĐ + 1.000.000 VNĐ' : 'Bronze + 1,000,000 VND'}</span></td>
+                </tr>
+                <tr style="background: #fffdf5;">
+                  <td style="text-align: center; font-weight: 800; color: #b45309; font-size: 14px;">19h00 - 20h15</td>
+                  <td><strong style="color: #b45309; font-size: 13.5px;">🏆 ${isVi ? 'TRẬN CHUNG KẾT' : 'GRAND FINAL'}</strong></td>
+                  <td style="text-align: center;"><span class="billiard-code-tag" style="background:#fff1f0; color:#cf1322; font-weight: 800;">CK</span></td>
+                  <td><div style="font-weight: 800; color: #b45309;">⭐ ${isVi ? 'Đội thắng Bán kết 1' : 'Winner of Semi-Final 1'}</div><div style="color: #b45309; font-size: 12px;">vs <strong>⭐ ${isVi ? 'Đội thắng Bán kết 2' : 'Winner of Semi-Final 2'}</strong></div></td>
+                  <td style="text-align: center;"><span class="branch-note-badge badge-final">${isVi ? 'Chung Kết' : 'Final'}</span></td>
+                  <td style="text-align: center;">Phòng Sài Gòn (Lầu 3)</td>
+                  <td><span style="color: #b45309; font-weight: 800;">👑 ${isVi ? 'Cúp Vô Địch + 3.000.000 VNĐ + 5 HCV' : 'Champion Cup + 3,000,000 VND + 5 Gold'}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CARD 2: TOURNAMENT BRACKET -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+            <div class="card-title" style="margin-bottom: 0;">
+              <span>🌿</span>
+              <span>${isVi ? 'SƠ ĐỒ PHÂN NHÁNH VÀ TIẾN TRÌNH THI ĐẤU LIÊN QUÂN (TOURNAMENT BRACKET)' : 'LIEN QUAN MOBILE TOURNAMENT BRACKET & PROGRESSION'}</span>
+            </div>
+            <span class="schedule-summary-badge" style="background: #e6f7ff; color: #0033a0; border-color: #91d5ff;">
+              ${isVi ? 'Đấu loại trực tiếp (Single Elimination) • Bo3 Cấm/Chọn Quốc Tế' : 'Single Elimination • Bo3 Global Ban/Pick'}
+            </span>
+          </div>
+
+          <div style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; font-size: 12.5px;">
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #0084ff;"></span>
+              <span style="color: #64748b;">${isVi ? 'Thẻ màu xanh dương (SL1-SL2, M1-M4, TK1-TK2, BK1: Nhánh Trên)' : 'Blue cards (Upper bracket)'}</span>
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #237804;"></span>
+              <span style="color: #64748b;">${isVi ? 'Thẻ màu xanh lá (SL3, M5-M8, TK3-TK4, BK2: Nhánh Dưới)' : 'Green cards (Lower bracket)'}</span>
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <span style="display: inline-block; width: 22px; height: 2px; background: repeating-linear-gradient(90deg, #94a3b8 0, #94a3b8 4px, transparent 4px, transparent 8px);"></span>
+              <span style="color: #64748b;">${isVi ? 'Đường phân cách Nhánh Trên & Nhánh Dưới' : 'Division Line'}</span>
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 6px;">
+              <span style="color: #0033a0; font-weight: 700;">➔</span>
+              <span style="color: #64748b;">${isVi ? 'Đường dẫn nhánh thắng tiến vào vòng sau' : 'Advancing feeder guide'}</span>
+            </span>
+          </div>
+
+          <div class="billiard-bracket-container">
+            <div class="billiard-bracket-tree" style="min-width: 1100px;">
+              <!-- COLUMN 1: SƠ LOẠI -->
+              <div class="bracket-round-col">
+                <div class="bracket-round-header">1. ${isVi ? 'VÒNG SƠ LOẠI (27/10)' : 'PRELIMINARY (OCT 27)'}</div>
+                <div class="bracket-round-matches">
+                  <!-- SL1 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>SL1 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-01</span>
+                      <span class="bracket-team-label">Biệt đội diệt gà</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-17</span>
+                      <span class="bracket-team-label">Chỉ Đánh Vòng Loại</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>M1</strong></span>
+                      <span>29/10 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- SL2 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>SL2 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-02</span>
+                      <span class="bracket-team-label">Chỉ Đánh Chung Kết</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-18</span>
+                      <span class="bracket-team-label">VD T-Rex</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>M4</strong></span>
+                      <span>29/10 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- Horizontal Divider Line -->
+                  <div class="bracket-horizontal-divider" title="${isVi ? 'Ranh giới phân chia Nhánh Trên & Nhánh Dưới' : 'Division Line'}"></div>
+
+                  <!-- SL3 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>SL3 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-03</span>
+                      <span class="bracket-team-label">DA INLINE</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-19</span>
+                      <span class="bracket-team-label">BL.SUGN</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>M5</strong></span>
+                      <span>29/10 • 18h00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUMN 2: VÒNG 1/16 -->
+              <div class="bracket-round-col">
+                <div class="bracket-round-header">2. ${isVi ? 'VÒNG 1/16 (29/10)' : 'ROUND OF 16 (OCT 29)'}</div>
+                <div class="bracket-round-matches">
+                  <!-- M1 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>M1 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-04</span>
+                      <span class="bracket-team-label">Thợ Săn Tiền Thưởng</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.SL1</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng SL1' : 'Winner SL1'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK1</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M2 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>M2 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-05</span>
+                      <span class="bracket-team-label">MM</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-15</span>
+                      <span class="bracket-team-label">Saigon Phantom</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK1</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M3 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>M3 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-06</span>
+                      <span class="bracket-team-label">Logistic DA2</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-16</span>
+                      <span class="bracket-team-label">ABC</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK2</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M4 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>M4 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-07</span>
+                      <span class="bracket-team-label">Chạy Đi Còn Kịp</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.SL2</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng SL2' : 'Winner SL2'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK2</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- Horizontal Divider Line -->
+                  <div class="bracket-horizontal-divider" title="${isVi ? 'Ranh giới phân chia Nhánh Trên & Nhánh Dưới' : 'Division Line'}"></div>
+
+                  <!-- M5 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>M5 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-08</span>
+                      <span class="bracket-team-label">Nợ Duyên</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.SL3</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng SL3' : 'Winner SL3'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK3</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M6 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>M6 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-09</span>
+                      <span class="bracket-team-label">AE Kitting VD1</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-14</span>
+                      <span class="bracket-team-label">Apex Predators</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK3</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M7 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>M7 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-10</span>
+                      <span class="bracket-team-label">Speaker_T1</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-13</span>
+                      <span class="bracket-team-label">PK~toichoi</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK4</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- M8 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>M8 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-11</span>
+                      <span class="bracket-team-label">REF_SL Team</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">LQ-12</span>
+                      <span class="bracket-team-label">VD3 . Esports</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>TK4</strong></span>
+                      <span>05/11 • 18h00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUMN 3: TỨ KẾT -->
+              <div class="bracket-round-col">
+                <div class="bracket-round-header">3. ${isVi ? 'VÒNG TỨ KẾT (05/11)' : 'QUARTER-FINALS (NOV 05)'}</div>
+                <div class="bracket-round-matches">
+                  <!-- TK1 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>TK1 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M1</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M1' : 'Winner M1'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M2</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M2' : 'Winner M2'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>BK1</strong></span>
+                      <span>12/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- TK2 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>TK2 • 18h00</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M3</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M3' : 'Winner M3'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M4</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M4' : 'Winner M4'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>BK1</strong></span>
+                      <span>12/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- Horizontal Divider Line -->
+                  <div class="bracket-horizontal-divider" title="${isVi ? 'Ranh giới phân chia Nhánh Trên & Nhánh Dưới' : 'Division Line'}"></div>
+
+                  <!-- TK3 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>TK3 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M5</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M5' : 'Winner M5'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M6</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M6' : 'Winner M6'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>BK2</strong></span>
+                      <span>12/11 • 18h00</span>
+                    </div>
+                  </div>
+
+                  <!-- TK4 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>TK4 • 18h00</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M7</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M7' : 'Winner M7'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.M8</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng M8' : 'Winner M8'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng vào' : 'To'}: <strong>BK2</strong></span>
+                      <span>12/11 • 18h00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUMN 4: BÁN KẾT (12/11 THỨ 5) -->
+              <div class="bracket-round-col">
+                <div class="bracket-round-header" style="background:#0f766e;">4. ${isVi ? 'VÒNG BÁN KẾT (12/11)' : 'SEMI-FINALS (NOV 12)'}</div>
+                <div class="bracket-round-matches">
+                  <!-- BK1 -->
+                  <div class="bracket-match-node branch-top">
+                    <div class="bracket-node-header">
+                      <span>BK1 • 18h00 (12/11)</span>
+                      <span class="branch-note-badge badge-top">${isVi ? 'Nhánh Trên' : 'Top'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.TK1</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng TK1' : 'Winner QF1'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.TK2</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng TK2' : 'Winner QF2'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng CK | Thua Tranh 3' : 'Win to Final | Lose to 3rd'}</span>
+                      <span>16/11</span>
+                    </div>
+                  </div>
+
+                  <!-- Horizontal Divider Line -->
+                  <div class="bracket-horizontal-divider"></div>
+
+                  <!-- BK2 -->
+                  <div class="bracket-match-node branch-bottom">
+                    <div class="bracket-node-header">
+                      <span>BK2 • 19h00 (12/11)</span>
+                      <span class="branch-note-badge badge-bottom">${isVi ? 'Nhánh Dưới' : 'Bottom'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.TK3</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng TK3' : 'Winner QF3'}</span>
+                    </div>
+                    <div class="bracket-team-slot">
+                      <span class="bracket-seed-badge">T.TK4</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng TK4' : 'Winner QF4'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>➔ ${isVi ? 'Thắng CK | Thua Tranh 3' : 'Win to Final | Lose to 3rd'}</span>
+                      <span>16/11</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COLUMN 5: CHUNG KẾT & TRANH HẠNG BA -->
+              <div class="bracket-round-col">
+                <div class="bracket-round-header" style="background:#b45309;">5. ${isVi ? 'CHUNG KẾT & BA (16/11)' : 'FINALS & 3RD (NOV 16)'}</div>
+                <div class="bracket-round-matches">
+                  <!-- CHUNG KẾT -->
+                  <div class="bracket-match-node branch-final">
+                    <div class="bracket-node-header">
+                      <span>🏆 CHUNG KẾT • 19h00</span>
+                      <span class="branch-note-badge badge-final">${isVi ? 'Chung Kết' : 'Final'}</span>
+                    </div>
+                    <div class="bracket-team-slot" style="background:transparent; color:#d46b08; font-weight: 700;">
+                      <span class="bracket-seed-badge" style="background:#ffe58f;">T.BK1</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng Bán kết 1' : 'Winner Semifinal 1'}</span>
+                    </div>
+                    <div class="bracket-team-slot" style="background:transparent; color:#d46b08; font-weight: 700;">
+                      <span class="bracket-seed-badge" style="background:#ffe58f;">T.BK2</span>
+                      <span class="bracket-team-label">${isVi ? 'Thắng Bán kết 2' : 'Winner Semifinal 2'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>🥇 ${isVi ? 'Tranh Cúp Vô Địch SEHC 2026' : 'Champion Trophy SEHC 2026'}</span>
+                    </div>
+                  </div>
+
+                  <!-- Horizontal Divider Line -->
+                  <div class="bracket-horizontal-divider"></div>
+
+                  <!-- TRANH HẠNG BA -->
+                  <div class="bracket-match-node branch-third">
+                    <div class="bracket-node-header">
+                      <span>🥉 TRANH HẠNG 3 • 18h00</span>
+                      <span class="branch-note-badge badge-third">${isVi ? 'Tranh Hạng 3' : '3rd Place'}</span>
+                    </div>
+                    <div class="bracket-team-slot" style="background:transparent; color:#003eb3; font-weight: 600;">
+                      <span class="bracket-seed-badge" style="background:#bae0ff;">B.BK1</span>
+                      <span class="bracket-team-label">${isVi ? 'Thua Bán kết 1' : 'Loser Semifinal 1'}</span>
+                    </div>
+                    <div class="bracket-team-slot" style="background:transparent; color:#003eb3; font-weight: 600;">
+                      <span class="bracket-seed-badge" style="background:#bae0ff;">B.BK2</span>
+                      <span class="bracket-team-label">${isVi ? 'Thua Bán kết 2' : 'Loser Semifinal 2'}</span>
+                    </div>
+                    <div class="bracket-route-bar">
+                      <span>🥉 ${isVi ? 'Tranh Huy Chương Đồng SEHC 2026' : 'Bronze Medal Match'}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     let currentRulesSport = 'pickleball';
 
     // Sub-menu clicked (Loads regulations dynamically based on selected language)
@@ -11926,22 +12820,22 @@
       let filePath = '';
       if (currentRulesSport === 'pickleball') {
         filePath = currentLang === 'vi' 
-          ? './Dieu_le_Giai_SEHC_Pickleball_Cup_2026.md' 
-          : './Rules_SEHC_Pickleball_Cup_2026.md';
+          ? '../Dieu_le_Giai_SEHC_Pickleball_Cup_2026.md' 
+          : '../Rules_SEHC_Pickleball_Cup_2026.md';
       } else if (currentRulesSport === 'soccer') {
-        filePath = './regulation/SEHC Olympic 2025_Dieu le bo mon Bong Da nam.md';
+        filePath = '../regulation/SEHC Olympic 2025_Dieu le bo mon Bong Da nam.md';
       } else if (currentRulesSport === 'badminton') {
         filePath = currentLang === 'vi'
-          ? './regulation/SEHC Olympic 2025_Dieu le bo mon Cau Long.md'
-          : './regulation/SEHC Olympic 2025_Dieu le bo mon Cau Long-EN.md';
+          ? '../regulation/SEHC Olympic 2025_Dieu le bo mon Cau Long.md'
+          : '../regulation/SEHC Olympic 2025_Dieu le bo mon Cau Long-EN.md';
       } else if (currentRulesSport === 'billiard') {
         filePath = currentLang === 'vi'
-          ? './regulation/SEHC Olympic 2025_Dieu le bo mon Bida-VN.md'
-          : './regulation/SEHC Olympic 2025_Dieu le bo mon Bida-EN.md';
+          ? '../regulation/SEHC Olympic 2025_Dieu le bo mon Bida-VN.md'
+          : '../regulation/SEHC Olympic 2025_Dieu le bo mon Bida-EN.md';
       } else if (currentRulesSport === 'foosball') {
-        filePath = './regulation/SEHC Olympic 2025_Dieu le bo mon BI LẮC.md';
+        filePath = '../regulation/SEHC Olympic 2025_Dieu le bo mon BI LẮC.md';
       } else if (currentRulesSport === 'lienquan') {
-        filePath = './regulation/SEHC Olympic 2025_Dieu le bo mon LienQuan Mobile.md';
+        filePath = '../regulation/SEHC Olympic 2025_Dieu le bo mon LienQuan Mobile.md';
       }
 
       try {
@@ -11987,8 +12881,7 @@
       currentLang = lang;
       
       // Update language toggle buttons active classes
-      const buttons = document.querySelectorAll('.lang-btn');
-      buttons.forEach(btn => {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.textContent.trim().toLowerCase() === lang) {
           btn.classList.add('active');
         } else {
@@ -11997,36 +12890,12 @@
       });
 
       // Update static text elements mapped via data-i18n
-      const translatable = document.querySelectorAll('[data-i18n]');
-      translatable.forEach(el => {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (i18n[lang] && i18n[lang][key]) {
           el.innerHTML = i18n[lang][key];
         }
       });
-
-      // Update input placeholders
-      const searchBox = document.getElementById('search-box');
-      if (searchBox) {
-        searchBox.placeholder = lang === 'vi' ? i18n.vi.searchPlaceholder : i18n.en.searchPlaceholder;
-      }
-
-      // Re-populate dropdown filters with translated names
-      populateDropdownFilters();
-      onSportChange();
-
-      // Update description labels
-      document.getElementById('kpi-teams-desc').textContent = lang === 'vi' ? 'Tổng số lượt đội đăng ký thi đấu' : 'Total registration counts';
-      document.getElementById('kpi-players-desc').textContent = lang === 'vi' ? 'Nhân sự thực tế tham dự hội thao' : 'Total unique athletes';
-
-      // Update dynamic KPIs
-      calculateKPIs();
-
-      // Redraw charts
-      renderStatisticsCharts();
-      
-      // Reload table content
-      renderTable();
 
       // Update schedule table translation
       renderScheduleSportFilters();

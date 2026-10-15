@@ -25,7 +25,7 @@
 
 | Group | Team name           | Captain ID | Captain name       | Player2 ID | Player2 name      | Remark     |
 | :---: | :---                | :---:      | :---               | :---:      | :---              | :---:      |
-| **A1** | Pick Refresh        | 16774200   | Trịnh Minh Hiếu    | 16805356   | Vũ Đình Khánh     | Đôi nam    |
+| **A1** | Pick Refresh        | 16774200   | Trịnh Minh Hiếu    | 25526023   | Huỳnh Như Thông   | Đôi nam    |
 | **A2** | Just Try            | 97130660   | LIM TAEKHWAN       | 12540676   | OH DOOHYUN        | Đôi nam    |
 | **A3** | DA Vitamin          | 23522522   | Lê Chí Hoà         | 17792812   | Lê Trịnh Bá Cương | Đôi nam    |
 | **B1** | Speed               | 24526022   | Chu Văn Cường      | 24508721   | Nguyễn Bá Quyền   | Đôi nam    |

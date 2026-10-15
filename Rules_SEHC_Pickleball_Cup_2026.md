@@ -25,7 +25,7 @@
 
 | Group | Team name           | Captain ID | Captain name       | Player2 ID | Player2 name      | Remark     |
 | :---: | :---                | :---:      | :---               | :---:      | :---              | :---:      |
-| **A1** | Pick Refresh        | 16774200   | Trịnh Minh Hiếu    | 16805356   | Vũ Đình Khánh     | Men's Doubles |
+| **A1** | Pick Refresh        | 16774200   | Trịnh Minh Hiếu    | 25526023   | Huỳnh Như Thông   | Men's Doubles |
 | **A2** | Just Try            | 97130660   | LIM TAEKHWAN       | 12540676   | OH DOOHYUN        | Men's Doubles |
 | **A3** | DA Vitamin          | 23522522   | Lê Chí Hoà         | 17792812   | Lê Trịnh Bá Cương | Men's Doubles |
 | **B1** | Speed               | 24526022   | Chu Văn Cường      | 24508721   | Nguyễn Bá Quyền   | Men's Doubles |

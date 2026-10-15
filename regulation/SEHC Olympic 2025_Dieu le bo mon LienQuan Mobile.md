@@ -13,7 +13,7 @@
 - **Vòng sơ loại:** Thứ Ba, ngày 27/10/2026 (từ 18h00)
 - **Vòng 1/16:** Thứ Năm, ngày 29/10/2026 (từ 18h00)
 - **Tứ kết:** Thứ Năm, ngày 05/11/2026 (từ 18h00)
-- **Bán kết:** Thứ Tư, ngày 11/11/2026 (từ 18h00)
+- **Bán kết:** Thứ Năm, ngày 12/11/2026 (từ 18h00)
 - **Tranh giải Ba & Chung kết:** Thứ Hai, ngày 16/11/2026 (từ 18h00)
 
 ### 1.3 Đối tượng tham gia
